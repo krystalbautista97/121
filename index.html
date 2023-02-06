@@ -1,17 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <p id="p1"></p>
-    <p id="p2"></p>
-    <p id="p3"></p>
+<html><head>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  </head>
+  <body>
+  
+  <h1>Functions &amp; validation</h1>
+  
+  <form id="form1" action="#" onsubmit="return validateForm(this);">
+    first name: <input type="text" name="firstname"><br>
+    last name: <input type="text" name="lastname"><br>
+    password: <input type="text" name="password"><br>
+  
+    <button>Check</button>
+  </form>
+  
+  <hr><div id="message"></div>
+  
+  <script>
+  
+  function validatePassword(){
+    let entredPassword = form1.password.value;
+    let passwordCorrect = false;
+    let lowerCaseLetters = /[a-z]/g;
+    let upperCaseLetters = /[A-Z]/g;
 
-    <script src="yes.js"></script>
-</body>
-</html>
+
+    if(entredPassword == " " || entredPassword == null) {
+        alert("Password cannot be blank");
+    }
+    
+    if (entredPassword.length < 8 || entredPassword.length > 15){
+      alert("Password length is less than 8 or greater than 15");
+    }
+    else{
+      alert("password correct")
+    }
+    if (entredPassword.match(lowerCaseLetters)){
+      alert("password has lowercase"); 
+    }
+    else {
+      alert("password has no lowercase")
+    }
+    if (entredPassword.match(upperCaseLetters)){
+      alert("password has uppercase"); 
+    }
+    else {
+      alert("password has no uppercase")
+    }
+  }
+
+
+  const validateForm = (myForm) => {
+    validatePassword();
+    let firstname = myForm.firstname.value; 
+    let lastname = myForm.lastname.value; 
+    
+
+    if(firstname == " " || firstname == null) {
+        alert("Invalid First Name");
+    }
+
+    
+    if(lastname == " " || lastname == null) {
+        alert("Invalid Last Name");
+    }
+    
+  
+  
+    return false; 
+  }
+  
+  </script>
+  
+  
+  </body></html>
